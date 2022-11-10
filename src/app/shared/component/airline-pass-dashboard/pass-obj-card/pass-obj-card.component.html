@@ -1,0 +1,29 @@
+<!-- [ngClass]="{'backgroundColor' : getObj.checkedIn === true ? 'bg-danger' : 'bg-success'}" -->
+ <div class="row mt-3"> 
+    <div class="col-md-8 offset-md-2"> 
+         <div class="card mb-4"> 
+            <div class="card-header" [ngClass]="{'bg-success' : getObj.checkedIn === true, 'bg-danger' : getObj.checkedIn === false}">
+                <strong class="text-white h5" *ngIf="flag">{{getObj.fullname}}</strong>
+                <input type="text" [value]="getObj.fullname" class="form-control" *ngIf="!flag" (input)="onInput($event)">
+            </div>
+            <div class="card-body" [ngClass]="{'alert-success' : getObj.checkedIn === true, 'alert-danger' : getObj.checkedIn === false}">
+                <p>Check in Date : {{(getObj.checkInDate | date) ? (getObj.checkInDate | date) : 'Not Checked in' }}</p>
+                <p>Children : {{getObj.children === null ? '0' : getObj.children.length}}</p>
+               
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2><i class="fas fa-plane-departure text-primary" [ngClass]="{'text-success' : getObj.checkedIn === true, 'text-danger' : getObj.checkedIn === false}"></i></h2>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group text-right">
+                            <button class="btn btn-outline-success mr-2"  (click)="onEditClick($event)" *ngIf="flag">Edit</button>
+                            <button class="btn btn-outline-success mr-2" (click)="onDoneClick($event)" *ngIf="!flag">Done</button>
+                            <button class="btn btn-outline-danger mr-2" (click)="onRemoveClick($event)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div> 
+ </div>
+ </div>

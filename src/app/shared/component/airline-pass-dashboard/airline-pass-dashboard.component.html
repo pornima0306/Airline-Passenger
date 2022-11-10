@@ -1,0 +1,4 @@
+<h1 class="text-center mt-4 text-primary"><i class="fas fa-plane-departure text-primary"></i> Airline Passengers! </h1>
+<app-total-checked-in [arrayForCount]="getArrayFormApp"></app-total-checked-in>
+<!-- <app-pass-list  *ngFor="let obj of getArrayFormApp"></app-pass-list> -->
+<app-pass-obj-card (sendObj)="sendData($event)"  [getObj]="obj" *ngFor="let obj of getArrayFormApp" ></app-pass-obj-card>
